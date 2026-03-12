@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeTech | Acessar</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__container container">
+            <a href="code.html" class="header__logo">
+                <img src="img/logo.svg" alt="CodeTech Logo" width="140" height="40">
+            </a>
+            <button class="header__menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="header__menu-icon"></span>
+            </button>
+            <nav class="header__nav" id="main-nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="code.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="code.html#servicos" class="nav__link">Serviços</a></li>
+                    <li class="nav__item"><a href="code.html#portfolio" class="nav__link">Portfólio</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <button class="nav__link nav__dropdown-toggle" aria-expanded="false">Empresa <span class="nav__dropdown-arrow">▼</span></button>
+                        <ul class="nav__dropdown">
+                            <li><a href="sobre-nos.html" class="nav__dropdown-link">Sobre Nós</a></li>
+                            <li><a href="code.html#equipe" class="nav__dropdown-link">Equipe</a></li>
+                            <li><a href="code.html#carreiras" class="nav__dropdown-link">Carreiras</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="code.html#contato" class="nav__link">Contato</a></li>
+                </ul>
+            </nav>
+            <a href="acessar.html" class="btn btn--primary header__cta">Acessar</a>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <!-- TASK-003: main substituído, header/footer/scripts intactos do original -->
+    <main class="main section--min-height" style="display:flex;align-items:center;justify-content:center;padding-top:var(--header-height)">
+        <div class="container" style="display:flex;flex-direction:column;align-items:center">
+            <h1 class="section__title">Acesse sua conta</h1>
+            <p class="section__subtitle">Entre com suas credenciais para continuar</p>
+            
+            <form class="form" id="login-form" action="" method="post">
+                <div class="form__group">
+                    <label for="email" class="form__label">E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form__input" 
+                        placeholder="seu@email.com"
+                        required 
+                        autocomplete="email"
+                    >
+                </div>
+                
+                <div class="form__group">
+                    <label for="senha" class="form__label">Senha</label>
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        name="senha" 
+                        class="form__input" 
+                        placeholder="Mínimo 8 caracteres"
+                        required 
+                        minlength="8"
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <button type="submit" class="btn btn--primary form__submit" id="submit-btn">
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__brand">
+                <a href="code.html" class="footer__logo">
+                    <img src="img/logo-white.svg" alt="CodeTech" width="120" height="35">
+                </a>
+                <p class="footer__tagline">Transformando ideias em código</p>
+            </div>
+            <nav class="footer__nav">
+                <ul class="footer__list">
+                    <li><a href="code.html" class="footer__link">Home</a></li>
+                    <li><a href="sobre-nos.html" class="footer__link">Sobre Nós</a></li>
+                    <li><a href="code.html#servicos" class="footer__link">Serviços</a></li>
+                    <li><a href="acessar.html" class="footer__link">Acessar</a></li>
+                </ul>
+            </nav>
+            <p class="footer__copy">© 2024 CodeTech. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script>
+    // TASK-003: Script de validação do formulário de login
+    // Posicionado antes de </body> - DOM já existe, não precisa de DOMContentLoaded
+    (function() {
+        'use strict';
+        
+        var form = document.getElementById('login-form');
+        var submitBtn = document.getElementById('submit-btn');
+        
+        if (form && submitBtn) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Validação nativa HTML5 já executada pelo browser
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                // Feedback visual de loading
+                submitBtn.textContent = 'Aguarde...';
+                submitBtn.disabled = true;
+                
+                // Simulação de envio - em produção, aqui entraria o fetch/ajax
+                // Por ora, apenas demonstra o feedback UX
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
